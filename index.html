@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adventure Escape SA</title>
+    <style>
+      :root {
+        --forest-green: #1b5e20;
+        --forest-deep: #134917;
+        --adventure-orange: #f57c00;
+        --sky-blue: #0288d1;
+        --off-white: #f5f5f0;
+        --white: #ffffff;
+        --text: #1d1d1d;
+        --muted: #666;
+        --card-shadow: 0 10px 30px rgba(22, 39, 18, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: var(--off-white);
+        line-height: 1.6;
+      }
+
+      img { max-width: 100%; display: block; }
+
+      a { text-decoration: none; color: inherit; }
+
+      .container {
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        background: rgba(255,255,255,0.96);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(27,94,32,0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        color: var(--forest-green);
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--forest-green), var(--sky-blue));
+        color: white;
+        display: grid;
+        place-items: center;
+        font-weight: bold;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--text);
+      }
+
+      .nav-menu a {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .nav-menu a:hover { color: var(--forest-green); }
+
+      .nav-cta {
+        background: var(--adventure-orange);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: var(--card-shadow);
+      }
+
+      .hero {
+        background: linear-gradient(rgba(12, 34, 15, 0.38), rgba(12, 34, 15, 0.32)),
+          url('pdf_images/page_31_0.png') center/cover no-repeat;
+        min-height: 620px;
+        display: grid;
+        place-items: center;
+      }
+
+      .hero-inner {
+        width: min(1200px, calc(100% - 32px));
+        color: white;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 4vw, 4.6rem);
+        line-height: 1.08;
+        margin: 18px 0;
+      }
+
+      .lead {
+        font-size: 1.12rem;
+        max-width: 620px;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 18px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: 0.2s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--adventure-orange);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.35);
+        color: white;
+      }
+
+      .hero-card {
+        background: rgba(255,255,255,0.11);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 24px;
+        padding: 20px;
+      }
+
+      .mini-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.45rem;
+      }
+
+      section {
+        padding: 86px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 44px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin: 0 0 12px;
+        color: var(--forest-deep);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .about-card {
+        background: white;
+        border-radius: 24px;
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+      }
+
+      .about-card img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+      }
+
+      .about-copy {
+        background: white;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: var(--card-shadow);
+      }
+
+      .pill-list {
+        list-style: none;
+        padding: 0;
+        margin: 22px 0 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .pill-list li {
+        padding-left: 28px;
+        position: relative;
+        color: var(--text);
+      }
+
+      .pill-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--adventure-orange);
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+      }
+
+      .card img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 20px 18px 22px;
+      }
+
+      .card-body h3 {
+        margin: 0 0 8px;
+        color: var(--forest-deep);
+        font-size: 1.4rem;
+      }
+
+      .price {
+        color: var(--adventure-orange);
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 10px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(2,136,209,0.12);
+        color: var(--sky-blue);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .activity-card {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        padding-bottom: 12px;
+      }
+
+      .activity-card img {
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .activity-card .content {
+        padding: 16px 18px 10px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .meta span {
+        background: var(--off-white);
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: var(--forest-green);
+      }
+
+      .cta-section {
+        background: linear-gradient(135deg, var(--forest-green), var(--sky-blue));
+        color: white;
+      }
+
+      .booking-wrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .booking-panel, .calc-panel {
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      .field label {
+        font-weight: 700;
+      }
+
+      .field input, .field select {
+        border: 1px solid rgba(255,255,255,0.25);
+        background: rgba(255,255,255,0.08);
+        color: white;
+        border-radius: 12px;
+        padding: 12px 14px;
+        font-size: 1rem;
+      }
+
+      .field input::placeholder {
+        color: rgba(255,255,255,0.7);
+      }
+
+      .amount-box {
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 18px;
+        margin-top: 18px;
+      }
+
+      .amount-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+      }
+
+      .summary-total {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-top: 18px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: var(--card-shadow);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .gallery-item span {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        background: rgba(27,94,32,0.72);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .review {
+        background: white;
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--card-shadow);
+      }
+
+      .stars {
+        color: var(--adventure-orange);
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .contact-box, .contact-form {
+        background: white;
+        border-radius: 24px;
+        box-shadow: var(--card-shadow);
+        padding: 28px;
+      }
+
+      .contact-detail {
+        display: flex;
+        align-items: start;
+        gap: 14px;
+        margin: 20px 0;
+      }
+
+      .icon {
+        background: rgba(245,124,0,0.12);
+        color: var(--adventure-orange);
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+      }
+
+      .contact-form .field input,
+      .contact-form .field textarea {
+        border: 1px solid rgba(27,94,32,0.12);
+        background: #f9f9f8;
+        color: var(--text);
+      }
+
+      .contact-form textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+
+      .references {
+        background: #fff;
+        border-top: 1px solid rgba(27,94,32,0.08);
+      }
+
+      .reference-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .reference-list a {
+        color: var(--forest-green);
+        text-decoration: underline;
+      }
+
+      footer {
+        background: var(--forest-deep);
+        color: #eaf3ea;
+        padding: 18px 0;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about-grid,
+        .booking-wrap,
+        .contact-wrap,
+        .cards,
+        .gallery-grid,
+        .reviews,
+        .activity-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          padding: 12px 0;
+        }
+
+        .nav-menu {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 8px;
+          justify-content: flex-start;
+        }
+
+        .hero {
+          min-height: 520px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <span>Adventure Escape SA</span>
+        </div>
+
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="packages.html">Packages</a>
+          <a href="activities.html">Activities</a>
+          <a href="book.html">Book</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="book.html">Book Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-inner">
+          <div>
+            <span class="eyebrow">Western Cape adventures</span>
+            <h1>Explore the Wild Beauty of the Western Cape</h1>
+            <p class="lead">
+              Adventure Escape SA offers professionally guided outdoor experiences for families,
+              tourists, schools, and corporate groups. Discover unforgettable hikes, ziplining,
+              kayaking, climbing, and team-building adventures in nature.
+            </p>
+            <div class="hero-actions">
+              <a href="book.html" class="btn btn-primary">Book Now</a>
+              <a href="packages.html" class="btn btn-secondary">Explore Adventures</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="mini-stat">
+              <div>
+                <span>Featured escape</span>
+                <strong>R2,400</strong>
+              </div>
+              <span>3 Days</span>
+            </div>
+            <div class="mini-stat">
+              <div>
+                <span>Top rated</span>
+                <strong>4.8/5</strong>
+              </div>
+              <span>Verified</span>
+            </div>
+            <div class="mini-stat">
+              <div>
+                <span>Popular activity</span>
+                <strong>Zipline</strong>
+              </div>
+              <span>2 hrs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <h2>About Our Team</h2>
+            <p>Adventure Escape SA was founded to share the natural wonders of the Western Cape through safe and memorable adventures.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <img src="pdf_images/page_15_0.png" alt="Adventure team in the mountain" />
+            </div>
+
+            <div class="about-copy">
+              <span class="badge">The Journey</span>
+              <h3>Guiding Your Escape Since 2018</h3>
+              <p>
+                We create outdoor experiences that help people reconnect with nature, push personal limits,
+                and build lasting memories. Our team blends professionalism, safety, and passion to deliver
+                unforgettable adventures across the Western Cape.
+              </p>
+              <ul class="pill-list">
+                <li>Families, international tourists, school groups, and corporate teams</li>
+                <li>Safety-first approach with experienced guides and trusted safety standards</li>
+                <li>Outdoor experiences designed around adventure, teamwork, and eco-tourism</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages">
+        <div class="container">
+          <div class="section-head">
+            <h2>Adventure Packages</h2>
+            <p>Choose a curated journey designed for thrill-seekers, families, and teams.</p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Ultimate Adventure Day" />
+              <div class="card-body">
+                <h3>Ultimate Adventure Day</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Ziplining, kayaking, climbing, and hiking in one exciting full-day adventure.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Family Explorer Package" />
+              <div class="card-body">
+                <h3>Family Explorer Package</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Easy scenic trails, zipline experiences, and relaxing picnic stops for the whole family.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Mountain Adventure Package" />
+              <div class="card-body">
+                <h3>Mountain Adventure Package</h3>
+                <div class="price">R1,500 / person</div>
+                <p>High-altitude hiking, rock scrambling, and rope safety guidance for confident explorers.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Corporate Team Challenge" />
+              <div class="card-body">
+                <h3>Corporate Team Challenge</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Wilderness-based experiences designed to build trust, alignment, and teamwork.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="activities">
+        <div class="container">
+          <div class="section-head">
+            <h2>Individual Activities</h2>
+            <p>Pick your thrill from our most popular outdoor experiences.</p>
+          </div>
+
+          <div class="activity-grid">
+            <article class="activity-card">
+              <img src="pdf_images/page_20_0.png" alt="Ziplining" />
+              <div class="content">
+                <h3>Ziplining Adventure</h3>
+                <div class="meta">
+                  <span>R750</span>
+                  <span>Easy</span>
+                  <span>2 Hours</span>
+                </div>
+                <p>Enjoy a scenic and exciting zipline adventure with certified safety guidance.</p>
+              </div>
+            </article>
+
+            <article class="activity-card">
+              <img src="pdf_images/page_20_0.png" alt="Kayaking" />
+              <div class="content">
+                <h3>Kayaking Experience</h3>
+                <div class="meta">
+                  <span>R750</span>
+                  <span>Moderate</span>
+                  <span>3 Hours</span>
+                </div>
+                <p>Explore calm waterways and river routes while enjoying nature and active movement.</p>
+              </div>
+            </article>
+
+            <article class="activity-card">
+              <img src="pdf_images/page_20_0.png" alt="Rock climbing" />
+              <div class="content">
+                <h3>Rock Climbing Session</h3>
+                <div class="meta">
+                  <span>R750</span>
+                  <span>Challenging</span>
+                  <span>4 Hours</span>
+                </div>
+                <p>Test your balance and confidence with guided climbs and certified instructor support.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" id="book">
+        <div class="container">
+          <div class="section-head" style="color: white;">
+            <h2 style="color: white;">Reserve Your Adventure</h2>
+            <p style="color: rgba(255,255,255,0.82);">Secure your booking and get a clear summary of pricing and discounts.</p>
+          </div>
+
+          <div class="booking-wrap">
+            <div class="booking-panel">
+              <form>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="name">Full name</label>
+                    <input id="name" type="text" placeholder="Sipho Ndlovu" />
+                  </div>
+
+                  <div class="field">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" type="tel" placeholder="+27 82 111 2222" />
+                  </div>
+
+                  <div class="field full">
+                    <label for="email">Email address</label>
+                    <input id="email" type="email" placeholder="sipho@email.com" />
+                  </div>
+
+                  <div class="field">
+                    <label for="adventure">Adventure</label>
+                    <select id="adventure">
+                      <option>Ultimate Adventure Day</option>
+                      <option>Family Explorer Package</option>
+                      <option>Mountain Adventure Package</option>
+                      <option>Corporate Team Challenge</option>
+                      <option>Ziplining Adventure</option>
+                      <option>Kayaking Experience</option>
+                      <option>Rock Climbing Session</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="date">Booking date</label>
+                    <input id="date" type="date" value="2026-10-18" />
+                  </div>
+
+                  <div class="field">
+                    <label for="people">Number of people</label>
+                    <input id="people" type="number" min="1" value="3" />
+                  </div>
+
+                  <div class="field">
+                    <label for="bookings">Number of bookings</label>
+                    <input id="bookings" type="number" min="1" value="4" />
+                  </div>
+
+                  <div class="field full">
+                    <label for="special">Special requirements</label>
+                    <input id="special" type="text" placeholder="Dietary, access, or group request" />
+                  </div>
+                </div>
+
+                <button class="btn btn-primary" type="button" style="margin-top: 22px;">Confirm Booking</button>
+              </form>
+            </div>
+
+            <aside class="calc-panel">
+              <h3>Discount Calculator</h3>
+              <p style="margin-top: 0; color: rgba(255,255,255,0.8);">Save on group bookings.</p>
+
+              <div class="amount-box">
+                <div class="amount-row"><span>Base price</span><span id="basePrice">R6000</span></div>
+                <div class="amount-row"><span>Discount</span><span id="discountRate">15% Off</span></div>
+                <div class="amount-row"><span>Group price</span><span id="groupPrice">R5100</span></div>
+                <div class="amount-row"><span>Savings</span><span id="savings">R900</span></div>
+                <div class="summary-total">Total: <span id="finalTotal">R5,100</span></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="container">
+          <div class="section-head">
+            <h2>Adventure Gallery</h2>
+            <p>Captured moments from our Western Cape adventures.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="pdf_images/page_26_0.png" alt="Elgin zipline" />
+              <span>Elgin Zipline Canopy</span>
+            </div>
+            <div class="gallery-item">
+              <img src="pdf_images/page_26_0.png" alt="Kayaking at Kogelberg" />
+              <span>Kayaking at Kogelberg</span>
+            </div>
+            <div class="gallery-item">
+              <img src="pdf_images/page_26_0.png" alt="Cederberg Ridge" />
+              <span>Cederberg Ridge</span>
+            </div>
+            <div class="gallery-item">
+              <img src="pdf_images/page_28_0.png" alt="Jonkershoek Trails" />
+              <span>Jonkershoek Trails</span>
+            </div>
+            <div class="gallery-item">
+              <img src="pdf_images/page_29_0.png" alt="Team building" />
+              <span>Team Building</span>
+            </div>
+            <div class="gallery-item">
+              <img src="pdf_images/page_29_0.png" alt="Western Cape sunset" />
+              <span>Western Cape Sunset</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <h2>Customer Reviews</h2>
+            <p>Trusted by families, corporate teams, and solo travellers.</p>
+          </div>
+
+          <div class="reviews">
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“The team was professional, knowledgeable, and really made the whole experience feel safe and fun. We booked a family day and loved every second.”</p>
+              <strong>Van der Merwe Family</strong>
+            </article>
+
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“A well-organised corporate challenge that brought our team together. The activities were memorable and perfectly managed.”</p>
+              <strong>Sarah &amp; Team, Apex Corp</strong>
+            </article>
+
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“From booking to the activity itself, everything was seamless. The guides were knowledgeable and the scenery was incredible.”</p>
+              <strong>David K.</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-head">
+            <h2>Contact Us</h2>
+            <p>Speak to us about tailored excursions, team events, and adventure packages.</p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="contact-box">
+              <div class="contact-detail">
+                <div class="icon">☎</div>
+                <div>
+                  <strong>Phone</strong>
+                  <p>+27 21 555 0148</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">✉</div>
+                <div>
+                  <strong>Email</strong>
+                  <p>hello@adventureescape.co.za</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">⌂</div>
+                <div>
+                  <strong>Location</strong>
+                  <p>123 Table Mountain Road, Cape Town, Western Cape</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">⏰</div>
+                <div>
+                  <strong>Operating Hours</strong>
+                  <p>Mon–Fri: 08:00–17:00<br />Sat: 09:00–14:00</p>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form">
+              <div class="field">
+                <label for="contactName">Your Name</label>
+                <input id="contactName" type="text" placeholder="Your full name" />
+              </div>
+
+              <div class="field">
+                <label for="contactEmail">Your Email</label>
+                <input id="contactEmail" type="email" placeholder="you@example.com" />
+              </div>
+
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" placeholder="How can we help?" />
+              </div>
+
+              <div class="field">
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Write your message here..."></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="button">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="references">
+        <div class="container" style="padding: 60px 0;">
+          <div class="section-head">
+            <h2>References</h2>
+          </div>
+
+          <ul class="reference-list">
+            <li>Android Developers. (2024). <a href="https://developer.android.com" target="_blank" rel="noreferrer">Build your first app</a>.</li>
+            <li>MDN Web Docs. (2024). <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer">HTML: HyperText Markup Language</a>.</li>
+            <li>MDN Web Docs. (2024). <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">CSS: Cascading Style Sheets</a>.</li>
+            <li>MDN Web Docs. (2024). <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank" rel="noreferrer">JavaScript Guide</a>.</li>
+            <li>Google. (2024). <a href="https://m3.material.io" target="_blank" rel="noreferrer">Material Design 3</a>.</li>
+            <li>OpenJS Foundation. (2024). <a href="https://api.jquery.com" target="_blank" rel="noreferrer">jQuery Documentation</a>.</li>
+            <li>W3Schools. (2024). <a href="https://www.w3schools.com/html/" target="_blank" rel="noreferrer">HTML Tutorial</a>.</li>
+            <li>W3Schools. (2024). <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">CSS Tutorial</a>.</li>
+            <li>W3Schools. (2024). <a href="https://www.w3schools.com/js/" target="_blank" rel="noreferrer">JavaScript Tutorial</a>.</li>
+            <li>World Wide Web Consortium (W3C). (2024). <a href="https://www.w3.org/standards/" target="_blank" rel="noreferrer">Web standards</a>.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Adventure Escape SA. Crafted for an outdoor adventure experience.
+    </footer>
+
+    <script>
+      const bookings = document.getElementById('bookings');
+      const people = document.getElementById('people');
+      const basePrice = document.getElementById('basePrice');
+      const discountRate = document.getElementById('discountRate');
+      const groupPrice = document.getElementById('groupPrice');
+      const savings = document.getElementById('savings');
+      const finalTotal = document.getElementById('finalTotal');
+
+      function updatePricing() {
+        const bookingCount = Number(bookings.value || 1);
+        const peopleCount = Number(people.value || 1);
+        const packagePrice = 1500;
+        const total = packagePrice * peopleCount;
+
+        let rate = 0;
+        if (bookingCount >= 4) rate = 15;
+        else if (bookingCount === 3) rate = 10;
+        else if (bookingCount === 2) rate = 5;
+
+        const discountAmount = total * (rate / 100);
+        const final = total - discountAmount;
+
+        basePrice.textContent = 'R' + total.toLocaleString();
+        discountRate.textContent = rate + '% Off';
+        groupPrice.textContent = 'R' + final.toLocaleString();
+        savings.textContent = 'R' + discountAmount.toLocaleString();
+        finalTotal.textContent = 'R' + final.toLocaleString();
+      }
+
+      bookings.addEventListener('input', updatePricing);
+      people.addEventListener('input', updatePricing);
+      updatePricing();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Packages — Adventure Escape SA</title>
+    <style>
+      :root{--forest-green:#1b5e20;--forest-deep:#134917;--adventure-orange:#f57c00;--sky-blue:#0288d1;--off-white:#f5f5f0;--text:#1d1d1d;--card-shadow:0 10px 30px rgba(22,39,18,0.12)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--off-white);line-height:1.6}img{max-width:100%;display:block}a{text-decoration:none;color:inherit}.container{width:min(1200px,calc(100% - 32px));margin:0 auto}header{background:rgba(255,255,255,0.96);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(27,94,32,0.08)}.nav{display:flex;align-items:center;justify-content:space-between;min-height:78px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--forest-green)}.brand-mark{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--forest-green),var(--sky-blue));color:white;display:grid;place-items:center;font-weight:bold}.nav-menu{display:flex;align-items:center;gap:26px;color:var(--text)}.nav-menu a{color:var(--text);font-weight:600}.nav-cta{background:var(--adventure-orange);color:white;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--card-shadow)}section{padding:86px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 44px}.section-head h2{font-size:clamp(2rem,3vw,3rem);margin:0 0 12px;color:var(--forest-deep)}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.card{background:white;border-radius:22px;overflow:hidden;box-shadow:var(--card-shadow)}.card img{height:220px;width:100%;object-fit:cover}.card-body{padding:20px 18px 22px}.card-body h3{margin:0 0 8px;color:var(--forest-deep);font-size:1.4rem}.price{color:var(--adventure-orange);font-weight:bold;font-size:1.2rem;margin:10px 0}footer{background:var(--forest-deep);color:#eaf3ea;padding:18px 0;text-align:center}@media(max-width:900px){.cards{grid-template-columns:1fr}.nav{flex-wrap:wrap;padding:12px 0}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <span>Adventure Escape SA</span>
+        </div>
+
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="packages.html">Packages</a>
+          <a href="activities.html">Activities</a>
+          <a href="book.html">Book</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="book.html">Book Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="packages">
+        <div class="container">
+          <div class="section-head">
+            <h2>Adventure Packages</h2>
+            <p>Choose a curated journey designed for thrill-seekers, families, and teams.</p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Ultimate Adventure Day" />
+              <div class="card-body">
+                <h3>Ultimate Adventure Day</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Ziplining, kayaking, climbing, and hiking in one exciting full-day adventure.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Family Explorer Package" />
+              <div class="card-body">
+                <h3>Family Explorer Package</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Easy scenic trails, zipline experiences, and relaxing picnic stops for the whole family.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Mountain Adventure Package" />
+              <div class="card-body">
+                <h3>Mountain Adventure Package</h3>
+                <div class="price">R1,500 / person</div>
+                <p>High-altitude hiking, rock scrambling, and rope safety guidance for confident explorers.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="pdf_images/page_18_0.png" alt="Corporate Team Challenge" />
+              <div class="card-body">
+                <h3>Corporate Team Challenge</h3>
+                <div class="price">R1,500 / person</div>
+                <p>Wilderness-based experiences designed to build trust, alignment, and teamwork.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Adventure Escape SA. Crafted for an outdoor adventure experience.
+    </footer>
+  </body>
+</html>

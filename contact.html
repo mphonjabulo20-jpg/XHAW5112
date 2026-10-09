@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Adventure Escape SA</title>
+    <style>
+      :root{--forest-green:#1b5e20;--forest-deep:#134917;--adventure-orange:#f57c00;--sky-blue:#0288d1;--off-white:#f5f5f0;--text:#1d1d1d;--card-shadow:0 10px 30px rgba(22,39,18,0.12)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--off-white);line-height:1.6}img{max-width:100%;display:block}a{text-decoration:none;color:inherit}.container{width:min(1200px,calc(100% - 32px));margin:0 auto}header{background:rgba(255,255,255,0.96);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(27,94,32,0.08)}.nav{display:flex;align-items:center;justify-content:space-between;min-height:78px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--forest-green)}.brand-mark{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--forest-green),var(--sky-blue));color:white;display:grid;place-items:center;font-weight:bold}.nav-menu{display:flex;align-items:center;gap:26px;color:var(--text)}.nav-menu a{color:var(--text);font-weight:600}.nav-cta{background:var(--adventure-orange);color:white;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--card-shadow)}section{padding:86px 0}.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}.contact-box,.contact-form{background:white;border-radius:24px;box-shadow:var(--card-shadow);padding:28px}.contact-detail{display:flex;align-items:start;gap:14px;margin:20px 0}.icon{background:rgba(245,124,0,0.12);color:var(--adventure-orange);width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:800}.contact-form .field input,.contact-form .field textarea{border:1px solid rgba(27,94,32,0.12);background:#f9f9f8;color:var(--text)}.contact-form textarea{min-height:130px;resize:vertical}footer{background:var(--forest-deep);color:#eaf3ea;padding:18px 0;text-align:center}@media(max-width:900px){.contact-wrap{grid-template-columns:1fr}.nav{flex-wrap:wrap;padding:12px 0}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <span>Adventure Escape SA</span>
+        </div>
+
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="packages.html">Packages</a>
+          <a href="activities.html">Activities</a>
+          <a href="book.html">Book</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="book.html">Book Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="contact">
+        <div class="container">
+          <div class="section-head">
+            <h2>Contact Us</h2>
+            <p>Speak to us about tailored excursions, team events, and adventure packages.</p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="contact-box">
+              <div class="contact-detail">
+                <div class="icon">☎</div>
+                <div>
+                  <strong>Phone</strong>
+                  <p>+27 21 555 0148</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">✉</div>
+                <div>
+                  <strong>Email</strong>
+                  <p>hello@adventureescape.co.za</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">⌂</div>
+                <div>
+                  <strong>Location</strong>
+                  <p>123 Table Mountain Road, Cape Town, Western Cape</p>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="icon">⏰</div>
+                <div>
+                  <strong>Operating Hours</strong>
+                  <p>Mon–Fri: 08:00–17:00<br />Sat: 09:00–14:00</p>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form">
+              <div class="field">
+                <label for="contactName">Your Name</label>
+                <input id="contactName" type="text" placeholder="Your full name" />
+              </div>
+
+              <div class="field">
+                <label for="contactEmail">Your Email</label>
+                <input id="contactEmail" type="email" placeholder="you@example.com" />
+              </div>
+
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" placeholder="How can we help?" />
+              </div>
+
+              <div class="field">
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Write your message here..."></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="button">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Adventure Escape SA. Crafted for an outdoor adventure experience.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book — Adventure Escape SA</title>
+    <style>
+      :root{--forest-green:#1b5e20;--forest-deep:#134917;--adventure-orange:#f57c00;--sky-blue:#0288d1;--off-white:#f5f5f0;--text:#1d1d1d;--card-shadow:0 10px 30px rgba(22,39,18,0.12)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--off-white);line-height:1.6}img{max-width:100%;display:block}a{text-decoration:none;color:inherit}.container{width:min(1200px,calc(100% - 32px));margin:0 auto}header{background:rgba(255,255,255,0.96);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(27,94,32,0.08)}.nav{display:flex;align-items:center;justify-content:space-between;min-height:78px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--forest-green)}.brand-mark{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--forest-green),var(--sky-blue));color:white;display:grid;place-items:center;font-weight:bold}.nav-menu{display:flex;align-items:center;gap:26px;color:var(--text)}.nav-menu a{color:var(--text);font-weight:600}.nav-cta{background:var(--adventure-orange);color:white;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--card-shadow)}section{padding:86px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 44px}.booking-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:start}.booking-panel,.calc-panel{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:24px;padding:24px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{display:grid;gap:8px}.field.full{grid-column:1 / -1}.field label{font-weight:700}.field input,.field select{border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);color:white;border-radius:12px;padding:12px 14px;font-size:1rem}.amount-box{background:rgba(255,255,255,0.08);border-radius:16px;padding:18px;margin-top:18px}.amount-row{display:flex;justify-content:space-between;margin:10px 0}.summary-total{font-size:1.8rem;font-weight:800;margin-top:18px}footer{background:var(--forest-deep);color:#eaf3ea;padding:18px 0;text-align:center}@media(max-width:900px){.booking-wrap{grid-template-columns:1fr}.nav{flex-wrap:wrap;padding:12px 0}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <span>Adventure Escape SA</span>
+        </div>
+
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="packages.html">Packages</a>
+          <a href="activities.html">Activities</a>
+          <a href="book.html">Book</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="book.html">Book Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="cta-section" id="book">
+        <div class="container">
+          <div class="section-head" style="color: white;">
+            <h2 style="color: white;">Reserve Your Adventure</h2>
+            <p style="color: rgba(255,255,255,0.82);">Secure your booking and get a clear summary of pricing and discounts.</p>
+          </div>
+
+          <div class="booking-wrap">
+            <div class="booking-panel">
+              <form>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="name">Full name</label>
+                    <input id="name" type="text" placeholder="Sipho Ndlovu" />
+                  </div>
+
+                  <div class="field">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" type="tel" placeholder="+27 82 111 2222" />
+                  </div>
+
+                  <div class="field full">
+                    <label for="email">Email address</label>
+                    <input id="email" type="email" placeholder="sipho@email.com" />
+                  </div>
+
+                  <div class="field">
+                    <label for="adventure">Adventure</label>
+                    <select id="adventure">
+                      <option>Ultimate Adventure Day</option>
+                      <option>Family Explorer Package</option>
+                      <option>Mountain Adventure Package</option>
+                      <option>Corporate Team Challenge</option>
+                      <option>Ziplining Adventure</option>
+                      <option>Kayaking Experience</option>
+                      <option>Rock Climbing Session</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="date">Booking date</label>
+                    <input id="date" type="date" value="2026-10-18" />
+                  </div>
+
+                  <div class="field">
+                    <label for="people">Number of people</label>
+                    <input id="people" type="number" min="1" value="3" />
+                  </div>
+
+                  <div class="field">
+                    <label for="bookings">Number of bookings</label>
+                    <input id="bookings" type="number" min="1" value="4" />
+                  </div>
+
+                  <div class="field full">
+                    <label for="special">Special requirements</label>
+                    <input id="special" type="text" placeholder="Dietary, access, or group request" />
+                  </div>
+                </div>
+
+                <button class="btn btn-primary" type="button" style="margin-top: 22px;">Confirm Booking</button>
+              </form>
+            </div>
+
+            <aside class="calc-panel">
+              <h3>Discount Calculator</h3>
+              <p style="margin-top: 0; color: rgba(255,255,255,0.8);">Save on group bookings.</p>
+
+              <div class="amount-box">
+                <div class="amount-row"><span>Base price</span><span id="basePrice">R6000</span></div>
+                <div class="amount-row"><span>Discount</span><span id="discountRate">15% Off</span></div>
+                <div class="amount-row"><span>Group price</span><span id="groupPrice">R5100</span></div>
+                <div class="amount-row"><span>Savings</span><span id="savings">R900</span></div>
+                <div class="summary-total">Total: <span id="finalTotal">R5,100</span></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Adventure Escape SA. Crafted for an outdoor adventure experience.
+    </footer>
+
+    <script>
+      const bookings = document.getElementById('bookings');
+      const people = document.getElementById('people');
+      const basePrice = document.getElementById('basePrice');
+      const discountRate = document.getElementById('discountRate');
+      const groupPrice = document.getElementById('groupPrice');
+      const savings = document.getElementById('savings');
+      const finalTotal = document.getElementById('finalTotal');
+
+      function updatePricing() {
+        const bookingCount = Number(bookings.value || 1);
+        const peopleCount = Number(people.value || 1);
+        const packagePrice = 1500;
+        const total = packagePrice * peopleCount;
+
+        let rate = 0;
+        if (bookingCount >= 4) rate = 15;
+        else if (bookingCount === 3) rate = 10;
+        else if (bookingCount === 2) rate = 5;
+
+        const discountAmount = total * (rate / 100);
+        const final = total - discountAmount;
+
+        basePrice.textContent = 'R' + total.toLocaleString();
+        discountRate.textContent = rate + '% Off';
+        groupPrice.textContent = 'R' + final.toLocaleString();
+        savings.textContent = 'R' + discountAmount.toLocaleString();
+        finalTotal.textContent = 'R' + final.toLocaleString();
+      }
+
+      bookings.addEventListener('input', updatePricing);
+      people.addEventListener('input', updatePricing);
+      updatePricing();
+    </script>
+  </body>
+</html>
